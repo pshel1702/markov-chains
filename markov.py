@@ -10,9 +10,9 @@ def open_and_read_file(file_path):
     the file's contents as one string of text.
     """
 
-    # your code goes here
+    read_file = open(file_path).read()
 
-    return 'Contents of your file as one long string'
+    return read_file
 
 
 def make_chains(text_string):
@@ -39,9 +39,21 @@ def make_chains(text_string):
         >>> chains[('there','juanita')]
         [None]
     """
-
+    list_of_words = text_string.split()
     chains = {}
-
+    for i in range(len(list_of_words)-2):
+        key = (list_of_words[i], list_of_words[i+1]) #Create keys as tuple
+        value = (list_of_words[i+2])
+        if key not in chains:
+            chains[key] = []
+        chains[key].append(value)
+    
+    # for i in range(len(list_of_words)-2):
+    #     for bigram,value in chains.items():
+    #         if bigram == (list_of_words[i], list_of_words[i+1]):
+    #             bigram = value.append(list_of_words[i+2])
+    
+    print(chains)
     # your code goes here
 
     return chains
